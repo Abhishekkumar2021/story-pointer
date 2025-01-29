@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
+    "dev": "node dist/app.js",
+    "predev": "npx tsc",
     "start": "node dist/app.js",
-    "prestart": "npx tsc"
+    "build": "npx tsc"
   },
   "keywords": [],
   "author": "",

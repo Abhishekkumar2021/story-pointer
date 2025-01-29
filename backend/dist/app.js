@@ -13,7 +13,7 @@ const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: '*',
+        origin: [process.env.CLIENT_URL],
     },
 });
 app.use((0, cors_1.default)());
@@ -35,7 +35,6 @@ app.delete('/session/:sessionId', (req, res) => {
     const { sessionId } = req.params;
     try {
         sessionManager.deleteSession(sessionId);
-        
         res.status(200).json({ message: 'Session deleted' });
     }
     catch (error) {
@@ -53,7 +52,6 @@ app.get("/users/:sessionId", (req, res) => {
             res.status(404).json({ error: 'Session not found or no users in session' });
             return;
         }
-        
         res.status(200).json({ users });
     }
     catch (error) {
@@ -62,13 +60,11 @@ app.get("/users/:sessionId", (req, res) => {
     }
 });
 io.on('connection', (socket) => {
-    
     socket.on('joinSession', ({ sessionId, username }) => {
         try {
             const user = sessionManager.addUserToSession(sessionId, username, 0);
             socket.join(sessionId);
             io.to(sessionId).emit('userJoined', user);
-            
         }
         catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
@@ -81,7 +77,6 @@ io.on('connection', (socket) => {
             sessionManager.removeUserFromSession(sessionId, username);
             socket.leave(sessionId);
             io.to(sessionId).emit('userLeft', { username });
-            
         }
         catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
@@ -93,7 +88,6 @@ io.on('connection', (socket) => {
         try {
             const updatedUser = sessionManager.updateUserPoints(sessionId, username, points);
             io.to(sessionId).emit('pointsUpdated', updatedUser);
-            
         }
         catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
@@ -105,7 +99,6 @@ io.on('connection', (socket) => {
         try {
             const newStatus = sessionManager.toggleUserShowPoints(sessionId, username);
             io.to(sessionId).emit('showPointsToggled', { username, showPoints: newStatus });
-            
         }
         catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
@@ -120,8 +113,7 @@ io.on('connection', (socket) => {
                 const user = session.users.find(user => user.username === username);
                 if (user) {
                     socket.join(sessionId);
-                    io.to(sessionId).emit('userJoined', user);
-                    
+                    io.to(sessionId).emit('userRejoined', user);
                 }
                 else {
                     throw new Error('User not found in session');
@@ -137,10 +129,7 @@ io.on('connection', (socket) => {
             socket.emit('error', { error: errorMessage });
         }
     });
-    socket.on('disconnect', () => {
-        
-    });
 });
-server.listen(8080, () => {
-    
+server.listen(process.env.PORT || 8080, () => {
+    console.log(`Server started at :${process.env.PORT || 8080}`);
 });

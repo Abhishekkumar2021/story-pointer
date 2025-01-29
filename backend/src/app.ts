@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: [process.env.CLIENT_URL as string],
   },
 });
 
@@ -138,6 +138,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(8080, () => {
-  console.log("Server started! You can access at http://localhost:8080")
+server.listen(process.env.PORT || 8080, () => {
+  console.log(`Server started at :${process.env.PORT || 8080}`);
 });
