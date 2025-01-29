@@ -62,7 +62,7 @@ const Session: React.FC = () => {
     const handleUserJoined = (data: User) => {
       setIsJoined(true);
       setUsers((prev) => [...prev, data]);
-      localStorage.setItem(`${sessionId}_username`, data.username);
+      localStorage.setItem(`${sessionId}_username`, username);
       toast.success(`${data.username} joined!`);
 
     };
