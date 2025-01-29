@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-zinc-100">
-      <Header />
+      <Header sessionId={''}/>
       <SessionForm />
       <Footer />
     </div>

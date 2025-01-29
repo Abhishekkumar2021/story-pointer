@@ -4,7 +4,9 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 import { v4 as uuidv4 } from 'uuid';
 import SessionManager from './db/session.db';
+import dotenv from "dotenv"
 
+dotenv.config()
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {

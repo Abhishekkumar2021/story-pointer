@@ -140,7 +140,7 @@ const Session: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-100">
-      <Header />
+      <Header sessionId={sessionId!} />
       {!isJoined ? (
         <div className="flex flex-1 flex-col p-4 justify-center items-center">
           <div className="flex flex-col bg-white shadow-md p-6 rounded-2xl w-80">
