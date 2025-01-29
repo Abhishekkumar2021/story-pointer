@@ -11,7 +11,7 @@ let socket: Socket | null = null;
 export const getSocket = (): Socket => {
   if (!socket) {
     
-    socket = io('http://localhost:8080');
+    socket = io(import.meta.env.VITE_SERVER_URL);
   }
   return socket;
 };
