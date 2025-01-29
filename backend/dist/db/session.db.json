@@ -1,0 +1,60 @@
+[
+  {
+    "sessionId": "de95f628-d175-4b3e-93fb-2c0914ceb71f",
+    "sessionName": "Abhishek",
+    "users": [
+      {
+        "username": "abhi",
+        "points": 13,
+        "showPoints": true
+      },
+      {
+        "username": "dadadsdffsf",
+        "points": 0,
+        "showPoints": false
+      },
+      {
+        "username": "Abhishek",
+        "points": 0,
+        "showPoints": false
+      }
+    ]
+  },
+  {
+    "sessionId": "847fd670-35d7-4f46-a69d-306534e47091",
+    "sessionName": "SessionA",
+    "users": []
+  },
+  {
+    "sessionId": "e50e8d4b-e2d1-49e4-b702-12a5d7f69579",
+    "sessionName": "Abhishek",
+    "users": [
+      {
+        "username": "ABCD",
+        "points": 21,
+        "showPoints": true
+      }
+    ]
+  },
+  {
+    "sessionId": "dd1898e1-d05b-4ac5-b168-eed78907fd3a",
+    "sessionName": "Session",
+    "users": []
+  },
+  {
+    "sessionId": "e9c9c381-f34f-4258-a5d5-36c7d60e85ba",
+    "sessionName": "Akansha",
+    "users": [
+      {
+        "username": "abcdefg",
+        "points": 2,
+        "showPoints": true
+      },
+      {
+        "username": "Temo",
+        "points": 8,
+        "showPoints": true
+      }
+    ]
+  }
+]
