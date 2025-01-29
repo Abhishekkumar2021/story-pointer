@@ -165,8 +165,6 @@ const Session: React.FC = () => {
       ) : (
         <div className="flex flex-1 flex-col">
           <div className="flex justify-between items-center w-full p-4">
-            <a href="#summary">See Summary</a>
-
             {/* Buttons Section */}
             <div className="flex gap-4 items-center">
               <button
